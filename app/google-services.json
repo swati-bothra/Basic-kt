@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "558773869091",
+    "project_id": "firebase-basickt"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:558773869091:android:422ce910886d6840",
+        "android_client_info": {
+          "package_name": "com.example.yolo.basic_kt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "558773869091-0lnb1cp7ded1fmedmasv6csjh123l5r6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yolo.basic_kt",
+            "certificate_hash": "3d58dbe6aaaf06afa8550609de137e9d2acfe697"
+          }
+        },
+        {
+          "client_id": "558773869091-o5q5mnlin8c789ttg4p8sc1s6c9ruvng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrzyEVGjpZngfSlU9N_6WwF9jqH87L0Kg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
