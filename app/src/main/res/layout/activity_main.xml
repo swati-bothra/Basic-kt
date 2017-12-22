@@ -16,15 +16,15 @@
         >
     </com.google.android.gms.common.SignInButton>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:id="@+id/logout"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:textColor="#fff"
-        android:background="@color/colorPrimary"
-        />
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Logout"-->
+        <!--android:id="@+id/logout"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:padding="10dp"-->
+        <!--android:textColor="#fff"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--/>-->
 
 </LinearLayout>
