@@ -8,7 +8,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import java.net.URL
-
+import kotlinx.android.synthetic.main.second_activity.*
 /**
  * Created by Swati Bothra on 18/12/17.
  */
@@ -22,30 +22,36 @@ class SecondActivity : Activity(){
         Log.e("SecondActivity","before URL")
 
         var result = ""
+//        var author = ""
+//        var title = ""
+//        var desc = ""
+//        var publishDate =""
+//        var imgUrl = ""
 
         doAsync {
-            result = URL("https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=b510575e772d4de494b282537828f819").readText()
+            result = URL("https://newsapi.org/v2/everything?q=apple&from=2017-12-22&to=2017-12-22&sortBy=popularity&apiKey=b510575e772d4de494b282537828f819").readText()
             val parser :Parser = Parser()
             val stringBuilder :StringBuilder = StringBuilder(result)
             val json :JsonObject = parser.parse(stringBuilder) as JsonObject
             val array :JsonArray<JsonObject> = json.array<JsonObject>("articles") as JsonArray<JsonObject>
 
-            val author :String = array[0].string("author") as String
-            val title :String = array[0].string("title")as String
-            val desc :String = array[0].string("description")as String
-            val imgUrl :String = array[0].string("urlToImage")as String
-            val publishDate :String = array[0].string("publishedAt")as String
+//            author = array[0].string("author") as String
+//            title = array[0].string("title")as String
+//            desc = array[0].string("description")as String
+//            imgUrl = array[0].string("urlToImage")as String
+//            publishDate = array[0].string("publishedAt")as String
 
             uiThread {
                 Log.e("seconActivity",result)
                 Log.e("SecondActivity","after URL")
-                Log.e("SecondActivity",author)
-                Log.e("SecondActivity",title)
-                Log.e("SecondActivity",desc)
-                Log.e("SecondActivity",imgUrl)
-                Log.e("SecondActivity",publishDate)
+                listview.adapter = ListAdapter(this@SecondActivity,array)
+
             }
         }
+
+
+
+
 
 
 
