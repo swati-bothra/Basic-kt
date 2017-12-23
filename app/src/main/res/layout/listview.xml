@@ -3,32 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="10dp">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/title_listview"/>
+        android:id="@+id/title_listview"
+        android:textAllCaps="true"
+        android:textSize="30dp"
+        android:textColor="#000"
+        android:layout_marginBottom="5dp"/>
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/img_listview"/>
+        android:id="@+id/img_listview"
+        android:layout_marginBottom="5dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/desc_listview"/>
+        android:id="@+id/desc_listview"
+        android:layout_marginBottom="5dp"
+        android:textColor="#000"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/author_listview"/>
+        android:id="@+id/author_listview"
+        android:layout_marginBottom="5dp"
+        android:textColor="#000"
+        android:textSize="15dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/publish_date_listview"/>
+        android:id="@+id/publish_date_listview"
+        android:layout_marginBottom="5dp"
+        android:textColor="#000"/>
 
 </LinearLayout>

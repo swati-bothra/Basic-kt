@@ -6,25 +6,20 @@
     android:layout_height="match_parent"
     tools:context="com.example.yolo.basic_kt.MainActivity"
     android:orientation="vertical"
-    android:paddingTop="150dp">
+    android:paddingTop="150dp"
+    android:background="@drawable/news">
+
 
     <com.google.android.gms.common.SignInButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:id="@+id/signin"
+        android:paddingTop="300dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         >
     </com.google.android.gms.common.SignInButton>
 
-    <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Logout"-->
-        <!--android:id="@+id/logout"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:padding="10dp"-->
-        <!--android:textColor="#fff"-->
-        <!--android:background="@color/colorPrimary"-->
-        <!--/>-->
+
 
 </LinearLayout>

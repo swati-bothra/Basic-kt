@@ -13,12 +13,14 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.common.api.ResultCallback
 import com.google.android.gms.common.api.Status
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.Serializable
 import kotlin.math.log
 
 class MainActivity : AppCompatActivity(),GoogleApiClient.OnConnectionFailedListener{
 
     private val SIGN_IN = 9001
     private var mGoogleApiClient :GoogleApiClient? = null
+    private  var islogin = false
 
     override fun onConnectionFailed(p0: ConnectionResult) {
         Toast.makeText(this,"ConnectionFailed!!",Toast.LENGTH_LONG).show()
@@ -31,7 +33,13 @@ class MainActivity : AppCompatActivity(),GoogleApiClient.OnConnectionFailedListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        uiUtil(false)
+        var ss:String =""
+        if (islogin){
+            ss= intent.getStringExtra("logout")
+        }
+
+
+        uiUtil(islogin)
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail().build()
         mGoogleApiClient = GoogleApiClient.Builder(this)
@@ -44,45 +52,55 @@ class MainActivity : AppCompatActivity(),GoogleApiClient.OnConnectionFailedListe
             startActivityForResult(signinIntent,SIGN_IN)
         })
 
-//        logout.setOnClickListener(View.OnClickListener {
-//            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-//                    object : ResultCallback<Status> {
-//                        override fun onResult(p0: Status) {
-//                            uiUtil(!p0.isSuccess)
-//                            Toast.makeText(this@MainActivity,"LogoutSuccessful",Toast.LENGTH_LONG).show()
-//                        }
-//
-//                    }
-//            )
-//        })
+        if (islogin&&ss.equals("logout")){
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                    object : ResultCallback<Status> {
+                        override fun onResult(p0: Status) {
+                            uiUtil(!p0.isSuccess)
+                            Toast.makeText(this@MainActivity,"LogoutSuccessful",Toast.LENGTH_LONG).show()
+                        }
 
+                    }
+            )
+        }
+
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP//***Change Here***
+        startActivity(intent)
+        finish()
+        System.exit(0)
+        super.onBackPressed()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode==SIGN_IN){
             var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
-            Toast.makeText(this,"SignInSuccessful",Toast.LENGTH_LONG).show()
-            uiUtil(result.isSuccess)
+            Toast.makeText(this,"Signing in...",Toast.LENGTH_LONG).show()
+            islogin = result.isSuccess
+            uiUtil(islogin)
         }
     }
 
     private fun uiUtil(isLogin : Boolean){
         if (isLogin){
-            Log.e("sigin","signinf innn")
 //            signin.visibility = View.GONE
 //            logout.visibility = View.VISIBLE
             var intent = Intent(this,SecondActivity::class.java)
             startActivity(intent)
-            Log.e("intent","intenttttttttttt")
         }
         else{
-            Log.e("logout","logotitu")
             signin.visibility = View.VISIBLE
 //            logout.visibility = View.GONE
         }
     }
 }
+
+
 
 
 
